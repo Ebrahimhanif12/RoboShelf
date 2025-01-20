@@ -18,16 +18,23 @@ namespace RoboShelf
 
 
     {
+        public string EmployeeName {  get; set; }
+        private string employeeId;
+        public LoginForm Lf {  get; set; }
+
         private List<CartItem> cartItems = new List<CartItem>();
         private DataAccess Da { get; set; }
-        public EmployeeForm()
+        public EmployeeForm(string employeeId, string employeeName) 
 
         {
             this.Da = new DataAccess();
 
             InitializeComponent();
             LoadProductData();
-
+            this.EmployeeName = employeeName;
+            this.employeeId = employeeId;
+            this.lblName4.Text = this.EmployeeName;
+            this.lblId.Text = employeeId;
         }
 
 

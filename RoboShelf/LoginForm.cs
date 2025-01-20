@@ -32,27 +32,30 @@ namespace RoboShelf
                     return;
                 }
 
-                string sql = "select * from UserInfo where userId = '" + this.txtUserId.Text + "' and password = '" + this.txtPassword.Text + "'";
+                string sql = "select * from UserInfoo where id = '" + this.txtUserId.Text + "' and password = '" + this.txtPassword.Text + "'";
                 DataAccess da = new DataAccess();
 
                 DataSet ds = da.ExecuteQuery(sql);
+                var name = ds.Tables[0].Rows[0][1].ToString();
+                var id = ds.Tables[0].Rows[0][0].ToString();
                
                 if (ds.Tables[0].Rows.Count == 1)
                 {
                    // this.Visible = false;
-                    MessageBox.Show("Valid User");
+                   // MessageBox.Show("Valid User");
                     
                     //MessageBox.Show("Role: " + ds.Tables[0].Rows[0][2] +" ");
-                    if (ds.Tables[0].Rows[0][2].ToString().Trim().Equals("admin"))
+                    if (ds.Tables[0].Rows[0][3].ToString().Trim().Equals("admin"))
                     {
-                        MessageBox.Show("Admin");
+                        MessageBox.Show("Admin" +name);
                     }
 
 
-                    else if (ds.Tables[0].Rows[0][2].ToString().Trim().Equals("employee"))
+                    else if (ds.Tables[0].Rows[0][3].ToString().Trim().Equals("employee"))
 
                     {
-                        MessageBox.Show("Employee");
+                       // MessageBox.Show("Employee " + name + " " +id);
+                        new EmployeeForm(id, name).Show();
                     }
                     
                 }

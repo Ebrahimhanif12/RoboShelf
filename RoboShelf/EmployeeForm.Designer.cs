@@ -29,13 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gdvCart = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.subTotal = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.increase = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.decrease = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblName4 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,14 +59,15 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.subTotal = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.increase = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.decrease = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lblId = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idLowStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameLowStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockLowStock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnLogout = new System.Windows.Forms.Button();
+            this.lblLowstock = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -66,11 +76,15 @@
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEmployee)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(55, 29);
@@ -87,6 +101,15 @@
             this.panel3.Size = new System.Drawing.Size(900, 676);
             this.panel3.TabIndex = 2;
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(697, 617);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(169, 46);
+            this.btnConfirm.TabIndex = 3;
+            this.btnConfirm.Text = "Procced";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -100,6 +123,7 @@
             // 
             // gdvCart
             // 
+            this.gdvCart.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gdvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ProductId,
@@ -117,6 +141,63 @@
             this.gdvCart.TabIndex = 4;
             this.gdvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvCart_CellContentClick);
             // 
+            // ProductId
+            // 
+            this.ProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.MinimumWidth = 8;
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Width = 150;
+            // 
+            // ProductName
+            // 
+            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 8;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.HeaderText = "Price";
+            this.ProductPrice.MinimumWidth = 8;
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
+            this.ProductPrice.Width = 80;
+            // 
+            // quantity
+            // 
+            this.quantity.HeaderText = "Quantityl";
+            this.quantity.MinimumWidth = 8;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            this.quantity.Width = 50;
+            // 
+            // subTotal
+            // 
+            this.subTotal.HeaderText = "Subtotal";
+            this.subTotal.MinimumWidth = 8;
+            this.subTotal.Name = "subTotal";
+            this.subTotal.ReadOnly = true;
+            this.subTotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.subTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.subTotal.Width = 50;
+            // 
+            // increase
+            // 
+            this.increase.HeaderText = "";
+            this.increase.MinimumWidth = 8;
+            this.increase.Name = "increase";
+            this.increase.Width = 30;
+            // 
+            // decrease
+            // 
+            this.decrease.HeaderText = "";
+            this.decrease.MinimumWidth = 8;
+            this.decrease.Name = "decrease";
+            this.decrease.Width = 30;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -129,39 +210,52 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnLogout);
+            this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.lblName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(56, 16);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(552, 592);
+            this.panel2.Size = new System.Drawing.Size(586, 310);
             this.panel2.TabIndex = 1;
+            // 
+            // lblName4
+            // 
+            this.lblName4.AutoSize = true;
+            this.lblName4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName4.Location = new System.Drawing.Point(128, 27);
+            this.lblName4.Name = "lblName4";
+            this.lblName4.Size = new System.Drawing.Size(87, 32);
+            this.lblName4.TabIndex = 4;
+            this.lblName4.Text = "sddfffg";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel4.Controls.Add(this.label2);
-            this.panel4.Location = new System.Drawing.Point(25, 361);
+            this.panel4.Controls.Add(this.lblId);
+            this.panel4.Controls.Add(this.lblName4);
+            this.panel4.Controls.Add(this.lblName);
+            this.panel4.Controls.Add(this.label1);
+            this.panel4.Location = new System.Drawing.Point(244, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(343, 198);
+            this.panel4.Size = new System.Drawing.Size(313, 126);
             this.panel4.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(73, 37);
+            this.label2.Location = new System.Drawing.Point(65, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(197, 32);
+            this.label2.Size = new System.Drawing.Size(126, 32);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Total Sales Today";
+            this.label2.Text = "Total Sales";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(361, 191);
+            this.label1.Location = new System.Drawing.Point(3, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 37);
             this.label1.TabIndex = 2;
@@ -171,7 +265,7 @@
             // 
             this.lblName.AutoSize = true;
             this.lblName.Font = new System.Drawing.Font("Palatino Linotype", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.Location = new System.Drawing.Point(361, 80);
+            this.lblName.Location = new System.Drawing.Point(3, 22);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(91, 37);
             this.lblName.TabIndex = 1;
@@ -180,15 +274,16 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(25, 29);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(316, 302);
+            this.pictureBox1.Size = new System.Drawing.Size(238, 234);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // gdvEmployee
             // 
+            this.gdvEmployee.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gdvEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gdvEmployee.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
@@ -209,8 +304,8 @@
             // id
             // 
             this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.id.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.id.DefaultCellStyle = dataGridViewCellStyle3;
             this.id.HeaderText = "Product Id";
             this.id.MinimumWidth = 8;
             this.id.Name = "id";
@@ -279,70 +374,93 @@
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // btnConfirm
+            // lblId
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(697, 617);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(169, 46);
-            this.btnConfirm.TabIndex = 3;
-            this.btnConfirm.Text = "Procced";
-            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.lblId.AutoSize = true;
+            this.lblId.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblId.Location = new System.Drawing.Point(138, 80);
+            this.lblId.Name = "lblId";
+            this.lblId.Size = new System.Drawing.Size(0, 32);
+            this.lblId.TabIndex = 5;
             // 
-            // ProductId
+            // panel6
             // 
-            this.ProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.MinimumWidth = 8;
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Location = new System.Drawing.Point(244, 135);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(313, 102);
+            this.panel6.TabIndex = 4;
             // 
-            // ProductName
+            // panel7
             // 
-            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.MinimumWidth = 8;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.lblLowstock);
+            this.panel7.Controls.Add(this.dataGridView1);
+            this.panel7.Location = new System.Drawing.Point(56, 349);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(586, 330);
+            this.panel7.TabIndex = 5;
             // 
-            // ProductPrice
+            // dataGridView1
             // 
-            this.ProductPrice.HeaderText = "Price";
-            this.ProductPrice.MinimumWidth = 8;
-            this.ProductPrice.Name = "ProductPrice";
-            this.ProductPrice.ReadOnly = true;
-            this.ProductPrice.Width = 80;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idLowStock,
+            this.nameLowStock,
+            this.stockLowStock});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 80);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.Size = new System.Drawing.Size(583, 264);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // quantity
+            // idLowStock
             // 
-            this.quantity.HeaderText = "Quantityl";
-            this.quantity.MinimumWidth = 8;
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Width = 50;
+            this.idLowStock.HeaderText = "Id";
+            this.idLowStock.MinimumWidth = 8;
+            this.idLowStock.Name = "idLowStock";
+            this.idLowStock.Width = 80;
             // 
-            // subTotal
+            // nameLowStock
             // 
-            this.subTotal.HeaderText = "Subtotal";
-            this.subTotal.MinimumWidth = 8;
-            this.subTotal.Name = "subTotal";
-            this.subTotal.ReadOnly = true;
-            this.subTotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.subTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.subTotal.Width = 50;
+            this.nameLowStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameLowStock.HeaderText = "Name";
+            this.nameLowStock.MinimumWidth = 8;
+            this.nameLowStock.Name = "nameLowStock";
             // 
-            // increase
+            // stockLowStock
             // 
-            this.increase.HeaderText = "";
-            this.increase.MinimumWidth = 8;
-            this.increase.Name = "increase";
-            this.increase.Width = 30;
+            this.stockLowStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.stockLowStock.HeaderText = "Stock";
+            this.stockLowStock.MinimumWidth = 8;
+            this.stockLowStock.Name = "stockLowStock";
             // 
-            // decrease
+            // btnLogout
             // 
-            this.decrease.HeaderText = "";
-            this.decrease.MinimumWidth = 8;
-            this.decrease.Name = "decrease";
-            this.decrease.Width = 30;
+            this.btnLogout.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogout.Location = new System.Drawing.Point(165, 254);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.Size = new System.Drawing.Size(142, 42);
+            this.btnLogout.TabIndex = 5;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.UseVisualStyleBackColor = true;
+            // 
+            // lblLowstock
+            // 
+            this.lblLowstock.AutoSize = true;
+            this.lblLowstock.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblLowstock.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblLowstock.Font = new System.Drawing.Font("Segoe Fluent Icons", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLowstock.Location = new System.Drawing.Point(132, 22);
+            this.lblLowstock.Name = "lblLowstock";
+            this.lblLowstock.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.lblLowstock.Size = new System.Drawing.Size(311, 51);
+            this.lblLowstock.TabIndex = 1;
+            this.lblLowstock.Text = "Low Stock Items";
+            this.lblLowstock.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // EmployeeForm
             // 
@@ -355,18 +473,21 @@
             this.MaximizeBox = false;
             this.Name = "EmployeeForm";
             this.Padding = new System.Windows.Forms.Padding(10);
-            this.Text = "EmployeeForm";
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvCart)).EndInit();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEmployee)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,5 +523,15 @@
         private System.Windows.Forms.DataGridViewButtonColumn subTotal;
         private System.Windows.Forms.DataGridViewButtonColumn increase;
         private System.Windows.Forms.DataGridViewButtonColumn decrease;
+        private System.Windows.Forms.Label lblName4;
+        private System.Windows.Forms.Label lblId;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idLowStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameLowStock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockLowStock;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label lblLowstock;
+        private System.Windows.Forms.Button btnLogout;
     }
 }
