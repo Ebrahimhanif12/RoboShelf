@@ -19,7 +19,7 @@ namespace RoboShelf
 
     {
         public string EmployeeName {  get; set; }
-        private string employeeId;
+        public string EmployeeId { get; set; }
         public LoginForm Lf {  get; set; }
 
         private List<CartItem> cartItems = new List<CartItem>();
@@ -32,7 +32,7 @@ namespace RoboShelf
             InitializeComponent();
             LoadProductData();
             this.EmployeeName = employeeName;
-            this.employeeId = employeeId;
+            this.EmployeeId = employeeId;
             this.lblName4.Text = this.EmployeeName;
             this.lblId.Text = employeeId;
         }
@@ -293,6 +293,51 @@ namespace RoboShelf
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if (gdvCart.Rows.Count < 0)
+            {
+                MessageBox.Show("The cart is empty. Please add items to proceed.", "Cart Empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Prepare cart data for checkout
+                DataTable cartData = new DataTable();
+                cartData.Columns.Add("Product Name");
+                cartData.Columns.Add("Price");
+                cartData.Columns.Add("Quantity");
+                cartData.Columns.Add("Total");
+
+                decimal totalPrice = 0;
+
+                foreach (DataGridViewRow row in gdvCart.Rows)
+                {
+                    if (row.Cells[0].Value != null) // Ensure row is valid
+                    {
+                        string productName = row.Cells[1].Value.ToString();
+                        decimal price = Convert.ToDecimal(row.Cells[2].Value);
+                        int quantity = Convert.ToInt32(row.Cells[3].Value);
+                        decimal total = Convert.ToDecimal(row.Cells[4].Value);
+
+                        cartData.Rows.Add(productName, price, quantity, total);
+                        totalPrice += total;
+                    }
+                }
+
+                // Pass data to CheckoutForm
+               // string employeeId = lblEmployeeId.Text; // Assuming lblEmployeeId holds the logged-in Employee ID
+                CheckoutForm checkoutForm = new CheckoutForm(cartData, this.EmployeeId, totalPrice);
+                this.Visible = false;
+                checkoutForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Proceed Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
