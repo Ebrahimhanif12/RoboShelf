@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtCustomerName = new System.Windows.Forms.TextBox();
-            this.txtCustomerEmail = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.comboboxPayment = new System.Windows.Forms.ComboBox();
             this.txtCustomerPhone = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btnConfirm = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtCustomerEmail = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtCustomerName = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.pnlCart = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.lblTotalPrice = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.lblTest = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlCart.SuspendLayout();
@@ -51,7 +51,7 @@
             // 
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.btnConfirm);
-            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Controls.Add(this.comboboxPayment);
             this.panel1.Controls.Add(this.txtCustomerPhone);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtCustomerEmail);
@@ -64,52 +64,42 @@
             this.panel1.Size = new System.Drawing.Size(521, 829);
             this.panel1.TabIndex = 0;
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(122, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 35);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Billing Details";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(59, 483);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 27);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Payment Method";
             // 
-            // label2
+            // btnConfirm
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(59, 185);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(73, 27);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Name";
+            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConfirm.Location = new System.Drawing.Point(64, 630);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(422, 66);
+            this.btnConfirm.TabIndex = 8;
+            this.btnConfirm.Text = "Confirm Order";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
-            // txtCustomerName
+            // comboboxPayment
             // 
-            this.txtCustomerName.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.txtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerName.Location = new System.Drawing.Point(64, 229);
-            this.txtCustomerName.Name = "txtCustomerName";
-            this.txtCustomerName.Size = new System.Drawing.Size(422, 30);
-            this.txtCustomerName.TabIndex = 2;
-            // 
-            // txtCustomerEmail
-            // 
-            this.txtCustomerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCustomerEmail.Location = new System.Drawing.Point(64, 339);
-            this.txtCustomerEmail.Name = "txtCustomerEmail";
-            this.txtCustomerEmail.Size = new System.Drawing.Size(422, 30);
-            this.txtCustomerEmail.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(59, 295);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 27);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Email";
+            this.comboboxPayment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboboxPayment.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboboxPayment.FormattingEnabled = true;
+            this.comboboxPayment.Items.AddRange(new object[] {
+            "Cash",
+            "Card",
+            "Mobile Banking"});
+            this.comboboxPayment.Location = new System.Drawing.Point(64, 529);
+            this.comboboxPayment.Name = "comboboxPayment";
+            this.comboboxPayment.Size = new System.Drawing.Size(422, 33);
+            this.comboboxPayment.TabIndex = 7;
             // 
             // txtCustomerPhone
             // 
@@ -129,41 +119,52 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Phone";
             // 
-            // comboBox1
+            // txtCustomerEmail
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Cash",
-            "Card",
-            "Mobile Banking"});
-            this.comboBox1.Location = new System.Drawing.Point(64, 529);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(422, 33);
-            this.comboBox1.TabIndex = 7;
+            this.txtCustomerEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerEmail.Location = new System.Drawing.Point(64, 339);
+            this.txtCustomerEmail.Name = "txtCustomerEmail";
+            this.txtCustomerEmail.Size = new System.Drawing.Size(422, 30);
+            this.txtCustomerEmail.TabIndex = 4;
             // 
-            // btnConfirm
+            // label3
             // 
-            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnConfirm.Location = new System.Drawing.Point(64, 630);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(422, 66);
-            this.btnConfirm.TabIndex = 8;
-            this.btnConfirm.Text = "Confirm Order";
-            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(59, 295);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 27);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Email";
             // 
-            // label5
+            // txtCustomerName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Palatino Linotype", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(59, 483);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(168, 27);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Payment Method";
+            this.txtCustomerName.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerName.Location = new System.Drawing.Point(64, 229);
+            this.txtCustomerName.Name = "txtCustomerName";
+            this.txtCustomerName.Size = new System.Drawing.Size(422, 30);
+            this.txtCustomerName.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(59, 185);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 27);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Name";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Sitka Heading", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(122, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 35);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Billing Details";
             // 
             // pnlCart
             // 
@@ -175,6 +176,15 @@
             this.pnlCart.Size = new System.Drawing.Size(485, 709);
             this.pnlCart.TabIndex = 1;
             // 
+            // lblTotalPrice
+            // 
+            this.lblTotalPrice.AutoSize = true;
+            this.lblTotalPrice.Location = new System.Drawing.Point(304, 652);
+            this.lblTotalPrice.Name = "lblTotalPrice";
+            this.lblTotalPrice.Size = new System.Drawing.Size(51, 20);
+            this.lblTotalPrice.TabIndex = 1;
+            this.lblTotalPrice.Text = "label7";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -184,15 +194,6 @@
             this.label6.Size = new System.Drawing.Size(203, 38);
             this.label6.TabIndex = 0;
             this.label6.Text = "Cart Summary";
-            // 
-            // lblTotalPrice
-            // 
-            this.lblTotalPrice.AutoSize = true;
-            this.lblTotalPrice.Location = new System.Drawing.Point(304, 652);
-            this.lblTotalPrice.Name = "lblTotalPrice";
-            this.lblTotalPrice.Size = new System.Drawing.Size(51, 20);
-            this.lblTotalPrice.TabIndex = 1;
-            this.lblTotalPrice.Text = "label7";
             // 
             // lblTest
             // 
@@ -212,6 +213,7 @@
             this.Controls.Add(this.pnlCart);
             this.Controls.Add(this.panel1);
             this.Name = "CheckoutForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CheckoutForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -232,7 +234,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCustomerPhone;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboboxPayment;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnConfirm;
         private System.Windows.Forms.Panel pnlCart;

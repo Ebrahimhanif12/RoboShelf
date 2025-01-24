@@ -41,22 +41,27 @@ namespace RoboShelf
                
                 if (ds.Tables[0].Rows.Count == 1)
                 {
-                   // this.Visible = false;
-                   // MessageBox.Show("Valid User");
-                    
+                    // this.Visible = false;
+                    // MessageBox.Show("Valid User");
+
                     //MessageBox.Show("Role: " + ds.Tables[0].Rows[0][2] +" ");
                     if (ds.Tables[0].Rows[0][3].ToString().Trim().Equals("admin"))
                     {
-                        MessageBox.Show("Admin" +name);
+                        //MessageBox.Show("Admin" +name);
+                        this.Visible = false;
+                        new AdminForm(this).Show();
+
+
                     }
 
 
                     else if (ds.Tables[0].Rows[0][3].ToString().Trim().Equals("employee"))
 
                     {
-                       // MessageBox.Show("Employee " + name + " " +id);
+                         MessageBox.Show("Employee " + name + " " +id);
+                        this.Visible = false;
                         new EmployeeForm(id, name).Show();
-                    }
+                    } 
                     
                 }
                 else

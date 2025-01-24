@@ -17,8 +17,9 @@ namespace RoboShelf
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            //Application.Run(new EmployeeForm("123","zisan"));
+            //Application.Run(new EmployeeForm();
             //Application.Run(new CheckoutForm());
+            //Application.Run(new AdminForm());
         }
     }
 }

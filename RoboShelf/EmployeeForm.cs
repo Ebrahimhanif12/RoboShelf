@@ -18,28 +18,65 @@ namespace RoboShelf
 
 
     {
-        public string EmployeeName {  get; set; }
-        public string EmployeeId { get; set; }
-        public LoginForm Lf {  get; set; }
+        public string EmployeeName { get; set; }
+        private string EmployeeId { get; set; }
+        public LoginForm Lf { get; set; }
 
         private List<CartItem> cartItems = new List<CartItem>();
         private DataAccess Da { get; set; }
-        public EmployeeForm(string employeeId, string employeeName) 
+        public EmployeeForm(string employeeId, string employeeName)
 
         {
             this.Da = new DataAccess();
-
+            this.EmployeeId = employeeId;
             InitializeComponent();
+            LoadTotalSalesAmount();
+            LoadLowStockData();
             LoadProductData();
             this.EmployeeName = employeeName;
-            this.EmployeeId = employeeId;
+            
             this.lblName4.Text = this.EmployeeName;
             this.lblId.Text = employeeId;
         }
+        /*
+        public EmployeeForm()
+        {
+            InitializeComponent();
+            LoadTotalSalesAmount();
+            LoadLowStockData();
+            LoadProductData();
+        }
+        */
+
+        //Load Low Stocks Data
+        private void LoadLowStockData()
+        {
+            try
+            {
+                string query = "SELECT id,name,  stock FROM product where stock <10"; // Change 'employee' to your actual table name
+                DataTable dt = Da.ExecuteQueryTable(query);
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    dgvLowStock.Rows.Add(
+                        row["id"].ToString(),
+                        row["name"].ToString(),
+                        row["stock"].ToString()
+                        
 
 
+                    );
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
 
         //Function for load all products.
+
+
         private void LoadProductData()
         {
             try
@@ -122,7 +159,7 @@ namespace RoboShelf
         }
 
         //Function for Refresh cart
-        private void RefreshCart()
+        public void RefreshCart()
         {
             gdvCart.Rows.Clear();
 
@@ -166,7 +203,7 @@ namespace RoboShelf
         }
 
 
-       
+
 
         //Function for getting stock value by id
         private int GetStock(int productId)
@@ -246,7 +283,7 @@ namespace RoboShelf
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtSearch_Leave(object sender, EventArgs e)
@@ -330,8 +367,8 @@ namespace RoboShelf
                 }
 
                 // Pass data to CheckoutForm
-               // string employeeId = lblEmployeeId.Text; // Assuming lblEmployeeId holds the logged-in Employee ID
-                CheckoutForm checkoutForm = new CheckoutForm(cartData, this.EmployeeId, totalPrice);
+                // string employeeId = lblEmployeeId.Text; // Assuming lblEmployeeId holds the logged-in Employee ID
+                CheckoutForm checkoutForm = new CheckoutForm(cartData,this.EmployeeName, this.EmployeeId, totalPrice,this);
                 this.Visible = false;
                 checkoutForm.Show();
             }
@@ -340,8 +377,44 @@ namespace RoboShelf
                 MessageBox.Show("Error: " + ex.Message, "Proceed Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public void LoadTotalSalesAmount()
+        {
+            try
+            {
+                
+
+                // Query to calculate the total bill amount for the given EmployeeId
+                string query = $@"
+            SELECT SUM(bill)
+            FROM salesData
+            WHERE selledBy = '{this.EmployeeId}';";
+               
+
+                // Execute the query and retrieve the result
+                var dt = this.Da.ExecuteQueryTable(query);
+
+                // Extract the total sales amount from the result
+                decimal totalSales = dt.Rows[0][0] != DBNull.Value ? Convert.ToDecimal(dt.Rows[0][0]) : 0;
+
+                // Update the label to display the total sales amount
+               this.lblTotalSale.Text = $"{totalSales:0.00}";
+               
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading total sales amount: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ClearCart()
+        {
+            this.cartItems.Clear(); // Clear the cart items
+            RefreshCart();          // Refresh the cart UI
+        }
+
+
     }
-    
+
 
 
 }
