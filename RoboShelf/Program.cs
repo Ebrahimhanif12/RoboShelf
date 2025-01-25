@@ -8,6 +8,7 @@ namespace RoboShelf
 {
     internal static class Program
     {
+        static LoginForm lg;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,10 +17,10 @@ namespace RoboShelf
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            //Application.Run(new LoginForm());
             //Application.Run(new EmployeeForm();
             //Application.Run(new CheckoutForm());
-            //Application.Run(new AdminForm());
+            Application.Run(new AdminForm(lg));
         }
     }
 }

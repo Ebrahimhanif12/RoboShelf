@@ -62,6 +62,8 @@ namespace RoboShelf
         //Events for Add User Button.-----------
         private void btnAddUser_Click(object sender, EventArgs e)
         {
+            this.pnlForCUDUser.Controls.Clear();
+
             UcAddUser ucadd = new UcAddUser();
             this.pnlForCUDUser.Controls.Add(ucadd);
 
@@ -167,6 +169,13 @@ namespace RoboShelf
         {
             btnViewEmployee.BackColor = Color.CornflowerBlue;
             btnViewEmployee.ForeColor = Color.White;
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            this.pnlForCUDUser.Controls.Clear();
+            UcAddProduct ucAdd = new UcAddProduct();
+            this.pnlForCUDUser.Controls.Add(ucAdd);
         }
     }
 }

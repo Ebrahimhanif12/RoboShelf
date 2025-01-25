@@ -74,6 +74,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UcAddProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UcAddProduct.Designer.cs">
+      <DependentUpon>UcAddProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="UcAddUser.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UcAddProduct.resx">
+      <DependentUpon>UcAddProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UcAddUser.resx">
       <DependentUpon>UcAddUser.cs</DependentUpon>

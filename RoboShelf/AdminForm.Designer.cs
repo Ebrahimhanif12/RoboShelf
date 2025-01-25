@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnViewEmployee = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnSalesReport = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
@@ -44,7 +45,8 @@
             this.userRole = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlForCUDUser = new System.Windows.Forms.Panel();
-            this.btnViewEmployee = new System.Windows.Forms.Button();
+            this.btnUpgradeProduct = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlForList.SuspendLayout();
@@ -54,6 +56,8 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.panel1.Controls.Add(this.btnAddProduct);
+            this.panel1.Controls.Add(this.btnUpgradeProduct);
             this.panel1.Controls.Add(this.btnViewEmployee);
             this.panel1.Controls.Add(this.btnLogout);
             this.panel1.Controls.Add(this.btnSalesReport);
@@ -63,8 +67,25 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(303, 762);
+            this.panel1.Size = new System.Drawing.Size(303, 930);
             this.panel1.TabIndex = 0;
+            // 
+            // btnViewEmployee
+            // 
+            this.btnViewEmployee.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnViewEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnViewEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnViewEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewEmployee.Location = new System.Drawing.Point(53, 533);
+            this.btnViewEmployee.Name = "btnViewEmployee";
+            this.btnViewEmployee.Size = new System.Drawing.Size(188, 49);
+            this.btnViewEmployee.TabIndex = 5;
+            this.btnViewEmployee.Text = "View Employee";
+            this.btnViewEmployee.UseVisualStyleBackColor = false;
+            this.btnViewEmployee.Click += new System.EventHandler(this.btnViewEmployee_Click);
+            this.btnViewEmployee.MouseLeave += new System.EventHandler(this.btnViewEmployee_MouseLeave);
+            this.btnViewEmployee.MouseHover += new System.EventHandler(this.btnViewEmployee_MouseHover);
             // 
             // btnLogout
             // 
@@ -73,7 +94,7 @@
             this.btnLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogout.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLogout.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogout.Location = new System.Drawing.Point(53, 647);
+            this.btnLogout.Location = new System.Drawing.Point(53, 696);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(188, 50);
             this.btnLogout.TabIndex = 4;
@@ -90,7 +111,7 @@
             this.btnSalesReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalesReport.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSalesReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalesReport.Location = new System.Drawing.Point(53, 567);
+            this.btnSalesReport.Location = new System.Drawing.Point(53, 616);
             this.btnSalesReport.Name = "btnSalesReport";
             this.btnSalesReport.Size = new System.Drawing.Size(188, 50);
             this.btnSalesReport.TabIndex = 3;
@@ -107,7 +128,7 @@
             this.btnProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProduct.Location = new System.Drawing.Point(53, 406);
+            this.btnProduct.Location = new System.Drawing.Point(53, 455);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(188, 49);
             this.btnProduct.TabIndex = 2;
@@ -134,7 +155,7 @@
             this.btnAddUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddUser.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUser.Location = new System.Drawing.Point(53, 327);
+            this.btnAddUser.Location = new System.Drawing.Point(53, 376);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(188, 53);
             this.btnAddUser.TabIndex = 0;
@@ -151,9 +172,9 @@
             this.pnlForList.Controls.Add(this.lblEmployeeList);
             this.pnlForList.Controls.Add(this.gdvEmployeeList);
             this.pnlForList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlForList.Location = new System.Drawing.Point(303, 441);
+            this.pnlForList.Location = new System.Drawing.Point(303, 474);
             this.pnlForList.Name = "pnlForList";
-            this.pnlForList.Size = new System.Drawing.Size(882, 321);
+            this.pnlForList.Size = new System.Drawing.Size(1018, 456);
             this.pnlForList.TabIndex = 2;
             // 
             // btnRefresh
@@ -191,11 +212,11 @@
             this.userRole,
             this.totalSale});
             this.gdvEmployeeList.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gdvEmployeeList.Location = new System.Drawing.Point(0, 73);
+            this.gdvEmployeeList.Location = new System.Drawing.Point(0, 76);
             this.gdvEmployeeList.Name = "gdvEmployeeList";
             this.gdvEmployeeList.RowHeadersWidth = 62;
             this.gdvEmployeeList.RowTemplate.Height = 28;
-            this.gdvEmployeeList.Size = new System.Drawing.Size(882, 248);
+            this.gdvEmployeeList.Size = new System.Drawing.Size(1018, 380);
             this.gdvEmployeeList.TabIndex = 0;
             // 
             // userId
@@ -237,31 +258,44 @@
             this.pnlForCUDUser.Size = new System.Drawing.Size(851, 394);
             this.pnlForCUDUser.TabIndex = 3;
             // 
-            // btnViewEmployee
+            // btnUpgradeProduct
             // 
-            this.btnViewEmployee.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.btnViewEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnViewEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnViewEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnViewEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewEmployee.Location = new System.Drawing.Point(53, 484);
-            this.btnViewEmployee.Name = "btnViewEmployee";
-            this.btnViewEmployee.Size = new System.Drawing.Size(188, 49);
-            this.btnViewEmployee.TabIndex = 5;
-            this.btnViewEmployee.Text = "View Employee";
-            this.btnViewEmployee.UseVisualStyleBackColor = false;
-            this.btnViewEmployee.Click += new System.EventHandler(this.btnViewEmployee_Click);
-            this.btnViewEmployee.MouseLeave += new System.EventHandler(this.btnViewEmployee_MouseLeave);
-            this.btnViewEmployee.MouseHover += new System.EventHandler(this.btnViewEmployee_MouseHover);
+            this.btnUpgradeProduct.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnUpgradeProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnUpgradeProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpgradeProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnUpgradeProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUpgradeProduct.Location = new System.Drawing.Point(53, 301);
+            this.btnUpgradeProduct.Name = "btnUpgradeProduct";
+            this.btnUpgradeProduct.Size = new System.Drawing.Size(188, 53);
+            this.btnUpgradeProduct.TabIndex = 6;
+            this.btnUpgradeProduct.Text = "Upgrade Product";
+            this.btnUpgradeProduct.UseVisualStyleBackColor = false;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.btnAddProduct.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAddProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddProduct.Location = new System.Drawing.Point(53, 228);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(188, 53);
+            this.btnAddProduct.TabIndex = 7;
+            this.btnAddProduct.Text = "Add Product";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            this.btnAddProduct.Click += new System.EventHandler(this.btnAddProduct_Click);
             // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1185, 762);
+            this.ClientSize = new System.Drawing.Size(1321, 930);
             this.Controls.Add(this.pnlForCUDUser);
             this.Controls.Add(this.pnlForList);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminForm";
@@ -292,5 +326,7 @@
         private System.Windows.Forms.Panel pnlForCUDUser;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnViewEmployee;
+        private System.Windows.Forms.Button btnUpgradeProduct;
+        private System.Windows.Forms.Button btnAddProduct;
     }
 }
