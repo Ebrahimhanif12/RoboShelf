@@ -18,18 +18,23 @@ namespace RoboShelf
 
 
     {
+        //Properties
         public string EmployeeName { get; set; }
         private string EmployeeId { get; set; }
         public LoginForm Lf { get; set; }
+        private DataAccess Da { get; set; }
 
         private List<CartItem> cartItems = new List<CartItem>();
-        private DataAccess Da { get; set; }
-        public EmployeeForm(string employeeId, string employeeName)
+        public EmployeeForm(string employeeId, string employeeName , LoginForm lgf)
 
         {
+            this.Lf = lgf;
+            //DataAccess class is a class in our project where All Sql query operation method implemented including database connection. It is because we will not have to write aql queries and methods in every time in every class.
+            //Now we will use Da property when we have to call any sql operation.
             this.Da = new DataAccess();
             this.EmployeeId = employeeId;
             InitializeComponent();
+            //initially Loading total sale, Low stock data and all product iin form.
             LoadTotalSalesAmount();
             LoadLowStockData();
             LoadProductData();
@@ -38,22 +43,12 @@ namespace RoboShelf
             this.lblName4.Text = this.EmployeeName;
             this.lblId.Text = employeeId;
         }
-        /*
-        public EmployeeForm()
-        {
-            InitializeComponent();
-            LoadTotalSalesAmount();
-            LoadLowStockData();
-            LoadProductData();
-        }
-        */
-
-        //Load Low Stocks Data
+       //Method for Loading Low stock product data which stocks are less than 10 from Database in form.
         private void LoadLowStockData()
-        {
+        {   //try and catch block in every method for Exception handling which is a requirment of our project
             try
             {
-                string query = "SELECT id,name,  stock FROM product where stock <10"; // Change 'employee' to your actual table name
+                string query = "SELECT id,name,  stock FROM product where stock <10"; 
                 DataTable dt = Da.ExecuteQueryTable(query);
 
                 foreach (DataRow row in dt.Rows)
@@ -74,16 +69,16 @@ namespace RoboShelf
             }
         }
 
-        //Function for load all products.
+        
 
-
+        //Method for loading all product info from database in form
         private void LoadProductData()
         {
             try
             {
-                string query = "SELECT id,name, category, price, stock, description FROM product"; // Change 'employee' to your actual table name
+                string query = "SELECT id,name, category, price, stock, description FROM product"; 
                 DataTable dt = Da.ExecuteQueryTable(query);
-
+                //We add a ""Add to Cart ? button colum in every row for adding the selected tem into cart.
                 foreach (DataRow row in dt.Rows)
                 {
                     gdvEmployee.Rows.Add(
@@ -158,7 +153,7 @@ namespace RoboShelf
             RefreshProductData();
         }
 
-        //Function for Refresh cart
+        //Function for Refresh cart after clcking Proceed button
         public void RefreshCart()
         {
             gdvCart.Rows.Clear();
@@ -281,11 +276,8 @@ namespace RoboShelf
             LoadProductData(); // Reload data from the database
         }
 
-        private void txtSearch_Enter(object sender, EventArgs e)
-        {
-
-        }
-
+        
+        //event for changing text in search box
         private void txtSearch_Leave(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtSearch.Text))
@@ -295,11 +287,13 @@ namespace RoboShelf
             }
         }
 
+        //event for changing text in search box
         private void txtSearch_MouseClick(object sender, MouseEventArgs e)
         {
             txtSearch.Text = "";
         }
 
+        //Evdnt for searching by text changed
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             string searchQuery = txtSearch.Text.Trim().ToLower();
@@ -310,7 +304,7 @@ namespace RoboShelf
                 string query = $"SELECT id, name, category, price, stock, description FROM product " +
                                $"WHERE name LIKE '%{searchQuery}%' OR category LIKE '%{searchQuery}%'";
 
-                // Execute the query and update the DataGridView
+                // Executing the query and updating the DataGridView
                 DataTable dt = Da.ExecuteQueryTable(query);
                 gdvEmployee.Rows.Clear();
 
@@ -332,7 +326,7 @@ namespace RoboShelf
                 MessageBox.Show("Error: " + ex.Message, "Search Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Event for Proceed button
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             if (gdvCart.Rows.Count < 0)
@@ -343,7 +337,7 @@ namespace RoboShelf
 
             try
             {
-                // Prepare cart data for checkout
+                // Preparing cart data for checkout
                 DataTable cartData = new DataTable();
                 cartData.Columns.Add("Product Name");
                 cartData.Columns.Add("Price");
@@ -354,7 +348,7 @@ namespace RoboShelf
 
                 foreach (DataGridViewRow row in gdvCart.Rows)
                 {
-                    if (row.Cells[0].Value != null) // Ensure row is valid
+                    if (row.Cells[0].Value != null) 
                     {
                         string productName = row.Cells[1].Value.ToString();
                         decimal price = Convert.ToDecimal(row.Cells[2].Value);
@@ -366,8 +360,7 @@ namespace RoboShelf
                     }
                 }
 
-                // Pass data to CheckoutForm
-                // string employeeId = lblEmployeeId.Text; // Assuming lblEmployeeId holds the logged-in Employee ID
+                // Passiing data to CheckoutForm
                 CheckoutForm checkoutForm = new CheckoutForm(cartData,this.EmployeeName, this.EmployeeId, totalPrice,this);
                 this.Visible = false;
                 checkoutForm.Show();
@@ -377,6 +370,7 @@ namespace RoboShelf
                 MessageBox.Show("Error: " + ex.Message, "Proceed Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        //Functon for calculating total sale amount
         public void LoadTotalSalesAmount()
         {
             try
@@ -390,13 +384,13 @@ namespace RoboShelf
             WHERE selledBy = '{this.EmployeeId}';";
                
 
-                // Execute the query and retrieve the result
+                // Executing the query and retrieve the result
                 var dt = this.Da.ExecuteQueryTable(query);
 
-                // Extract the total sales amount from the result
+                // Extracting the total sales amount from the result
                 decimal totalSales = dt.Rows[0][0] != DBNull.Value ? Convert.ToDecimal(dt.Rows[0][0]) : 0;
 
-                // Update the label to display the total sales amount
+                // Updating the label to display the total sales amount
                this.lblTotalSale.Text = $"{totalSales:0.00}";
                
             }
@@ -405,14 +399,24 @@ namespace RoboShelf
                 MessageBox.Show($"An error occurred while loading total sales amount: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        //Function for clear cart data after procedd
         public void ClearCart()
         {
-            this.cartItems.Clear(); // Clear the cart items
-            RefreshCart();          // Refresh the cart UI
+            this.cartItems.Clear(); 
+            RefreshCart();          
         }
 
-
+        //Event for logout button
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+            this.Lf.Show();
+        }
+        //Event for closing application by close button
+        private void EmployeeForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 
 

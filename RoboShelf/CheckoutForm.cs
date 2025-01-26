@@ -25,7 +25,6 @@ namespace RoboShelf
         {
             InitializeComponent();
             this.Da = new DataAccess();
-            //this.Ef = ef= new EmployeeForm(employeeId)
             this.Ef = ef;
             this.CartData = cartData;
             this.EmployeeId = employeeId;
@@ -36,13 +35,10 @@ namespace RoboShelf
 
 
         }
-
+        //Method for addiing cart item in checkout form dynamically
         private void LoadCheckoutData()
         {
-            // Display employee ID
-            //lblEmployeeId.Text = "Employee ID: " + EmployeeId;
-
-            // Display cart items dynamically as labels
+            
             int yPosition = 60;
             foreach (DataRow row in CartData.Rows)
             {
@@ -51,7 +47,7 @@ namespace RoboShelf
                 string quantity = row["Quantity"].ToString();
                 string total = row["Total"].ToString();
 
-                // Create a label for the cart item
+                // Creating a label for the cart item
                 Label lblCartItem = new Label
                 {
                     Text = $"{quantity} * {productName} | Price: {price} | Total: {total}",
@@ -63,7 +59,7 @@ namespace RoboShelf
 
                 yPosition += lblCartItem.Height + 5;
 
-                // Create a horizontal line (Panel as a divider)
+                // Creating a horizontal line (Panel as a divider)
                 Panel horizontalLine = new Panel
                 {
                     Height = 2,
@@ -72,20 +68,21 @@ namespace RoboShelf
                     Location = new System.Drawing.Point(20, yPosition)
                 };
 
-                // Add the horizontal line to the panel
+                // Adding the horizontal line to the panel
                 pnlCart.Controls.Add(horizontalLine);
 
 
 
 
 
-                yPosition += 10; // Adjust position for the next label
+                yPosition += 10; 
             }
 
-            // Display total price
+            // Displaying total price
             lblTotalPrice.Text = " +Total Price: $" + TotalPrice.ToString("0.00");
         }
 
+        //Method for AutoId generate.
         private int AutoIdGenerate(string query)
         {
             try
@@ -94,16 +91,16 @@ namespace RoboShelf
                 
                 var dt = this.Da.ExecuteQueryTable(query);
 
-                // Get the current maximum ID or start with 0 if the table is empty
+                // Geting the current maximum ID or start with 0 if the table is empty
                 int oldId = dt.Rows[0][0] != DBNull.Value ? Convert.ToInt32(dt.Rows[0][0]) : 0;
 
-                // Increment to generate the new ID
+                // Incrementing to generate the new ID
                 return oldId + 1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error generating new ID: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1; // Return -1 to indicate an error
+                return -1; 
             }
         }
 
@@ -111,7 +108,7 @@ namespace RoboShelf
 
 
 
-
+        //Event for Confirm button
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             SaveCustomerInfo();
@@ -155,8 +152,8 @@ namespace RoboShelf
         VALUES ('{customerId}', '{customerName}', '{customerEmail}', '{customerPhone}', {this.TotalPrice}, '{paymentMethod}')";
 
                 string salesInsertQuery = $@"
-        INSERT INTO salesData (invoiceId, customerId, bill, selledBy) 
-        VALUES ('{invoiceId}', '{customerId}', '{this.TotalPrice}', '{this.EmployeeId}')";
+        INSERT INTO salesData (invoiceId, customerId, bill, selledBy,SaleDate) 
+        VALUES ('{invoiceId}', '{customerId}', '{this.TotalPrice}', '{this.EmployeeId}',GETDATE())";
 
                 // Execute queries
                 int count = 0;
@@ -193,7 +190,7 @@ namespace RoboShelf
             }
         }
 
-        // Utility Methods for Validation
+        //  Methods for Validation Email and phone number. (collected from Internet). It will we added in Refference part.
         private bool IsValidEmail(string email)
         {
             try
@@ -210,7 +207,7 @@ namespace RoboShelf
         private bool IsValidPhone(string phone)
         {
             // Example: Ensure phone number contains only digits and is 10-15 characters long
-            return phone.All(char.IsDigit) && phone.Length >= 10 && phone.Length <= 15;
+            return phone.All(char.IsDigit) && phone.Length >= 11;
         }
 
 

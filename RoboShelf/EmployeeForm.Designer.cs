@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblLowstock = new System.Windows.Forms.Label();
@@ -45,19 +45,13 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnLogout = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblTotalSale = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnProceed = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
             this.gdvCart = new System.Windows.Forms.DataGridView();
-            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProductPrice = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.quantity = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.subTotal = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.increase = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.decrease = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.gdvEmployee = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,7 +62,13 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addBtn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.lblTotalSale = new System.Windows.Forms.Label();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProductPrice = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.quantity = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.subTotal = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.increase = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.decrease = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLowStock)).BeginInit();
@@ -170,7 +170,7 @@
             // 
             this.lblId.AutoSize = true;
             this.lblId.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblId.Location = new System.Drawing.Point(138, 80);
+            this.lblId.Location = new System.Drawing.Point(87, 75);
             this.lblId.Name = "lblId";
             this.lblId.Size = new System.Drawing.Size(0, 32);
             this.lblId.TabIndex = 5;
@@ -224,6 +224,7 @@
             this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "Logout";
             this.btnLogout.UseVisualStyleBackColor = true;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // panel6
             // 
@@ -234,6 +235,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(318, 92);
             this.panel6.TabIndex = 4;
+            // 
+            // lblTotalSale
+            // 
+            this.lblTotalSale.AutoSize = true;
+            this.lblTotalSale.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalSale.Location = new System.Drawing.Point(173, 31);
+            this.lblTotalSale.Name = "lblTotalSale";
+            this.lblTotalSale.Size = new System.Drawing.Size(0, 32);
+            this.lblTotalSale.TabIndex = 3;
             // 
             // label2
             // 
@@ -257,22 +267,22 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.btnConfirm);
+            this.panel3.Controls.Add(this.btnProceed);
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Location = new System.Drawing.Point(639, 29);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(913, 570);
             this.panel3.TabIndex = 2;
             // 
-            // btnConfirm
+            // btnProceed
             // 
-            this.btnConfirm.Location = new System.Drawing.Point(671, 499);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(169, 46);
-            this.btnConfirm.TabIndex = 3;
-            this.btnConfirm.Text = "Procced";
-            this.btnConfirm.UseVisualStyleBackColor = true;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.btnProceed.Location = new System.Drawing.Point(671, 499);
+            this.btnProceed.Name = "btnProceed";
+            this.btnProceed.Size = new System.Drawing.Size(169, 46);
+            this.btnProceed.TabIndex = 3;
+            this.btnProceed.Text = "Procced";
+            this.btnProceed.UseVisualStyleBackColor = true;
+            this.btnProceed.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
             // panel5
             // 
@@ -305,63 +315,6 @@
             this.gdvCart.TabIndex = 4;
             this.gdvCart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvCart_CellContentClick);
             // 
-            // ProductId
-            // 
-            this.ProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ProductId.HeaderText = "ProductId";
-            this.ProductId.MinimumWidth = 8;
-            this.ProductId.Name = "ProductId";
-            this.ProductId.ReadOnly = true;
-            this.ProductId.Width = 150;
-            // 
-            // ProductName
-            // 
-            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ProductName.HeaderText = "ProductName";
-            this.ProductName.MinimumWidth = 8;
-            this.ProductName.Name = "ProductName";
-            this.ProductName.ReadOnly = true;
-            // 
-            // ProductPrice
-            // 
-            this.ProductPrice.HeaderText = "Price";
-            this.ProductPrice.MinimumWidth = 8;
-            this.ProductPrice.Name = "ProductPrice";
-            this.ProductPrice.ReadOnly = true;
-            this.ProductPrice.Width = 80;
-            // 
-            // quantity
-            // 
-            this.quantity.HeaderText = "Quantityl";
-            this.quantity.MinimumWidth = 8;
-            this.quantity.Name = "quantity";
-            this.quantity.ReadOnly = true;
-            this.quantity.Width = 50;
-            // 
-            // subTotal
-            // 
-            this.subTotal.HeaderText = "Subtotal";
-            this.subTotal.MinimumWidth = 8;
-            this.subTotal.Name = "subTotal";
-            this.subTotal.ReadOnly = true;
-            this.subTotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.subTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.subTotal.Width = 50;
-            // 
-            // increase
-            // 
-            this.increase.HeaderText = "";
-            this.increase.MinimumWidth = 8;
-            this.increase.Name = "increase";
-            this.increase.Width = 30;
-            // 
-            // decrease
-            // 
-            this.decrease.HeaderText = "";
-            this.decrease.MinimumWidth = 8;
-            this.decrease.Name = "decrease";
-            this.decrease.Width = 30;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -384,19 +337,19 @@
             this.stock,
             this.description,
             this.addBtn});
-            this.gdvEmployee.Location = new System.Drawing.Point(55, 708);
+            this.gdvEmployee.Location = new System.Drawing.Point(55, 692);
             this.gdvEmployee.Name = "gdvEmployee";
             this.gdvEmployee.RowHeadersWidth = 62;
             this.gdvEmployee.RowTemplate.Height = 28;
-            this.gdvEmployee.Size = new System.Drawing.Size(1497, 631);
+            this.gdvEmployee.Size = new System.Drawing.Size(1497, 246);
             this.gdvEmployee.TabIndex = 1;
             this.gdvEmployee.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvEmployee_CellContentClick);
             // 
             // id
             // 
             this.id.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.id.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.id.DefaultCellStyle = dataGridViewCellStyle1;
             this.id.HeaderText = "Product Id";
             this.id.MinimumWidth = 8;
             this.id.Name = "id";
@@ -461,32 +414,80 @@
             this.txtSearch.Size = new System.Drawing.Size(517, 46);
             this.txtSearch.TabIndex = 2;
             this.txtSearch.Text = "Search by Product or Category name";
-            this.txtSearch.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtSearch_MouseClick);
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
             // 
-            // lblTotalSale
+            // ProductId
             // 
-            this.lblTotalSale.AutoSize = true;
-            this.lblTotalSale.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalSale.Location = new System.Drawing.Point(173, 31);
-            this.lblTotalSale.Name = "lblTotalSale";
-            this.lblTotalSale.Size = new System.Drawing.Size(0, 48);
-            this.lblTotalSale.TabIndex = 3;
+            this.ProductId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductId.HeaderText = "ProductId";
+            this.ProductId.MinimumWidth = 8;
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            // 
+            // ProductName
+            // 
+            this.ProductName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductName.HeaderText = "ProductName";
+            this.ProductName.MinimumWidth = 8;
+            this.ProductName.Name = "ProductName";
+            this.ProductName.ReadOnly = true;
+            // 
+            // ProductPrice
+            // 
+            this.ProductPrice.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ProductPrice.HeaderText = "Price";
+            this.ProductPrice.MinimumWidth = 8;
+            this.ProductPrice.Name = "ProductPrice";
+            this.ProductPrice.ReadOnly = true;
+            // 
+            // quantity
+            // 
+            this.quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.quantity.HeaderText = "Quantityl";
+            this.quantity.MinimumWidth = 8;
+            this.quantity.Name = "quantity";
+            this.quantity.ReadOnly = true;
+            // 
+            // subTotal
+            // 
+            this.subTotal.HeaderText = "Subtotal";
+            this.subTotal.MinimumWidth = 8;
+            this.subTotal.Name = "subTotal";
+            this.subTotal.ReadOnly = true;
+            this.subTotal.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.subTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.subTotal.Width = 50;
+            // 
+            // increase
+            // 
+            this.increase.HeaderText = "";
+            this.increase.MinimumWidth = 8;
+            this.increase.Name = "increase";
+            this.increase.Width = 30;
+            // 
+            // decrease
+            // 
+            this.decrease.HeaderText = "";
+            this.decrease.MinimumWidth = 8;
+            this.decrease.Name = "decrease";
+            this.decrease.Width = 30;
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2378, 1590);
+            this.ClientSize = new System.Drawing.Size(1578, 944);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.gdvEmployee);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "EmployeeForm";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EmployeeForm_FormClosed);
             this.panel1.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -529,14 +530,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView gdvCart;
         private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button btnConfirm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
-        private System.Windows.Forms.DataGridViewButtonColumn ProductPrice;
-        private System.Windows.Forms.DataGridViewButtonColumn quantity;
-        private System.Windows.Forms.DataGridViewButtonColumn subTotal;
-        private System.Windows.Forms.DataGridViewButtonColumn increase;
-        private System.Windows.Forms.DataGridViewButtonColumn decrease;
+        private System.Windows.Forms.Button btnProceed;
         private System.Windows.Forms.Label lblName4;
         private System.Windows.Forms.Label lblId;
         private System.Windows.Forms.Panel panel7;
@@ -548,5 +542,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameLowStock;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockLowStock;
         private System.Windows.Forms.Label lblTotalSale;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductName;
+        private System.Windows.Forms.DataGridViewButtonColumn ProductPrice;
+        private System.Windows.Forms.DataGridViewButtonColumn quantity;
+        private System.Windows.Forms.DataGridViewButtonColumn subTotal;
+        private System.Windows.Forms.DataGridViewButtonColumn increase;
+        private System.Windows.Forms.DataGridViewButtonColumn decrease;
     }
 }

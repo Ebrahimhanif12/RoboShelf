@@ -33,15 +33,23 @@ namespace RoboShelf
             try
             {
                 this.gdvEmployeeList.Rows.Clear();
-                string query = "SELECT id,name, role FROM userInfoo";
+                string query = "SELECT id,name, role FROM userInfoo where id LIKE '%e%'";
                 DataTable dt = this.Da.ExecuteQueryTable(query);
-
+               // string empId = dt.Rows[0].ToString();
+               
+                
                 foreach (DataRow row in dt.Rows)
                 {
+                   string query2 = "SELECT SUM(bill) FROM salesData WHERE selledBy = '" + row["id"] + "';";
+                    DataTable dt2 = this.Da.ExecuteQueryTable(query2);
+
+                    string totalBill = (dt2.Rows[0][0] == DBNull.Value || dt2.Rows[0][0] == null) ? "0" : dt2.Rows[0][0].ToString();
+
                     this.gdvEmployeeList.Rows.Add(
                         row["id"].ToString(),
                         row["name"].ToString(),
-                        row["role"].ToString()
+                        row["role"].ToString(),
+                        "$"+totalBill + ".00"
 
 
 
@@ -105,7 +113,8 @@ namespace RoboShelf
         //Events for Sales Report Button--------------------------------
         private void btnSalesReport_Click(object sender, EventArgs e)
         {
-           
+            SalesReport sr = new SalesReport();
+            sr.Show();
         }
 
         private void btnSalesReport_MouseHover(object sender, EventArgs e)
@@ -176,6 +185,11 @@ namespace RoboShelf
             this.pnlForCUDUser.Controls.Clear();
             UcAddProduct ucAdd = new UcAddProduct();
             this.pnlForCUDUser.Controls.Add(ucAdd);
+        }
+
+        private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

@@ -17,10 +17,10 @@ namespace RoboShelf
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginForm());
+            Application.Run(new SalesReport());
             //Application.Run(new EmployeeForm();
             //Application.Run(new CheckoutForm());
-            Application.Run(new AdminForm(lg));
+          //  Application.Run(new AdminForm(lg));
         }
     }
 }
